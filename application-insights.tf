@@ -12,11 +12,6 @@ module "application_insights" {
   daily_data_cap_in_gb = var.daily_data_cap_in_gb
 }
 
-moved {
-  from = azurerm_application_insights.appinsights
-  to   = module.application_insights.azurerm_application_insights.this
-}
-
 resource "azurerm_key_vault_secret" "appInsights-InstrumentationKey" {
   name         = "appInsights-InstrumentationKey"
   value        = module.application_insights.instrumentation_key

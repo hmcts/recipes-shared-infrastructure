@@ -20,6 +20,7 @@ output "vaultName" {
 }
 
 resource "azurerm_user_assigned_identity" "managed_identity" {
+  count = var.create_chart_tests_mi ? 1 : 0
 
   resource_group_name = "managed-identities-${var.env}-rg"
   location            = var.location
@@ -27,5 +28,4 @@ resource "azurerm_user_assigned_identity" "managed_identity" {
   name = "chart-tests-${var.env}-mi"
 
   tags  = var.common_tags
-  count = var.create_chart_tests_mi ? 1 : 0
 }

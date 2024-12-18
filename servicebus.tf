@@ -18,7 +18,19 @@ resource "azurerm_servicebus_queue" "this" {
   default_message_ttl = "P1D" # 1 day
 }
 
-resource "azurerm_role_assignment" "plum_servicebus_data_receiver" {
+resource "azurerm_servicebus_queue" "this" {
+  name                = "plum"
+  namespace_id        = module.servicebus-namespace.id
+  default_message_ttl = "P1D" # 1 day
+}
+
+resource "azurerm_servicebus_queue" "this" {
+  name                = "toffee"
+  namespace_id        = module.servicebus-namespace.id
+  default_message_ttl = "P1D" # 1 day
+}
+
+resource "azurerm_role_assignment" "recipes_servicebus_data_receiver" {
   principal_id         = module.vault.managed_identity_objectid[0]
   scope                = module.servicebus-namespace.id
   role_definition_name = "Azure Service Bus Data Receiver"
