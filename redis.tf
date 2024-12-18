@@ -1,7 +1,4 @@
 # REDIS CACHE TESTING
-
-
-
 module "recipes-redis-storage" {
   source                          = "git@github.com:hmcts/cnp-module-redis?ref=DTSPO-17012-data-persistency"
   product                         = "${var.product}-${var.component}-session-storage"
