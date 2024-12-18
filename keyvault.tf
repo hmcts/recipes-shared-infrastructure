@@ -27,5 +27,5 @@ resource "azurerm_user_assigned_identity" "managed_identity" {
 
   name = "chart-tests-${var.env}-mi"
 
-  tags  = var.common_tags
+  tags = var.common_tags
 }
