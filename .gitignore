@@ -1,0 +1,6 @@
+.terraform
+.talismanignore
+.idea/
+*.iml
+.terraform.lock.hcl
+.tfplan.txt
