@@ -3,14 +3,15 @@ module "postgresql_flexible" {
     azurerm.postgres_network = azurerm.postgres_network
   }
 
-  source        = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
-  env           = var.env
-  product       = var.product
-  name          = "${var.product}-flexible"
-  component     = ""
-  business_area = "CFT"
-  location      = var.location
-  subnet_suffix = "expanded"
+  source              = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
+  env                 = var.env
+  product             = var.product
+  name                = "${var.product}-flexible"
+  component           = ""
+  business_area       = "CFT"
+  location            = var.location
+  subnet_suffix       = "expanded"
+  resource_group_name = azurerm_resource_group.shared_resource_group.name
 
   common_tags          = var.common_tags
   admin_user_object_id = var.jenkins_AAD_objectId
