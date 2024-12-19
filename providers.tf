@@ -5,7 +5,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   features {}
-  resource_provider_registrations = "none"
+  resource_provider_registrations = "core"
   alias                           = "private_endpoint"
   subscription_id                 = var.aks_subscription_id
 }
