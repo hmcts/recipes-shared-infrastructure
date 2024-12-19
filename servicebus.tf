@@ -1,4 +1,4 @@
-module "servicebus-namespace" {
+module "servicebus_namespace" {
   providers = {
     azurerm.private_endpoint = azurerm.private_endpoint
   }
@@ -12,27 +12,27 @@ module "servicebus-namespace" {
   project             = var.project
 }
 
-resource "azurerm_servicebus_queue" "this" {
+resource "azurerm_servicebus_queue" "recipes_service_bus_queue" {
   name                = "recipes"
-  namespace_id        = module.servicebus-namespace.id
+  namespace_id        = module.servicebus_namespace.id
   default_message_ttl = "P1D" # 1 day
 }
 
-resource "azurerm_servicebus_queue" "this" {
+resource "azurerm_servicebus_queue" "plum_service_bus_queue" {
   name                = "plum"
-  namespace_id        = module.servicebus-namespace.id
+  namespace_id        = module.servicebus_namespace.id
   default_message_ttl = "P1D" # 1 day
 }
 
-resource "azurerm_servicebus_queue" "this" {
+resource "azurerm_servicebus_queue" "toffee_service_bus_queue" {
   name                = "toffee"
-  namespace_id        = module.servicebus-namespace.id
+  namespace_id        = module.servicebus_namespace.id
   default_message_ttl = "P1D" # 1 day
 }
 
 resource "azurerm_role_assignment" "recipes_servicebus_data_receiver" {
   principal_id         = module.vault.managed_identity_objectid[0]
-  scope                = module.servicebus-namespace.id
+  scope                = module.servicebus_namespace.id
   role_definition_name = "Azure Service Bus Data Receiver"
 }
 
@@ -43,7 +43,7 @@ data "azurerm_user_assigned_identity" "keda" {
 
 resource "azurerm_role_assignment" "keda_servicebus_data_receiver" {
   principal_id         = data.azurerm_user_assigned_identity.keda.principal_id
-  scope                = module.servicebus-namespace.id
+  scope                = module.servicebus_namespace.id
   role_definition_name = "Azure Service Bus Data Receiver"
 }
 
@@ -55,7 +55,7 @@ data "azuread_group" "platops" {
 
 resource "azurerm_role_assignment" "platops_servicebus_data_owner" {
   principal_id         = data.azuread_group.platops.object_id
-  scope                = module.servicebus-namespace.id
+  scope                = module.servicebus_namespace.id
   role_definition_name = "Azure Service Bus Data Owner"
 }
 
