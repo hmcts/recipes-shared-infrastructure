@@ -1,6 +1,6 @@
 
 //SHARED VARIABLES
-variable "subscription" {}
+variable "subscription_id" {}
 variable "aks_subscription_id" {}
 
 variable "product" {
