@@ -7,7 +7,7 @@ module "postgresql_flexible" {
   env           = var.env
   product       = var.product
   name          = "${var.product}-flexible"
-  component     = var.component
+  component     = ""
   business_area = "CFT"
   location      = var.location
   subnet_suffix = "expanded"
