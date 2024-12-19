@@ -52,13 +52,13 @@ resource "azurerm_key_vault_secret" "POSTGRES_PORT" {
 }
 
 resource "azurerm_key_vault_secret" "POSTGRES_DATABASE_CFT" {
-  name         = "recipe-backend-POSTGRES-DATABASE_CFT"
+  name         = "recipe-backend-POSTGRES-DATABASE-CFT"
   value        = "plum"
   key_vault_id = module.vault.key_vault_id
 }
 
 resource "azurerm_key_vault_secret" "POSTGRES_DATABASE_SDS" {
-  name         = "recipe-backend-POSTGRES-DATABASE_SDS"
+  name         = "recipe-backend-POSTGRES-DATABASE-SDS"
   value        = "toffee"
   key_vault_id = module.vault.key_vault_id
 }
