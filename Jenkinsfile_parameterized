@@ -1,0 +1,24 @@
+#!groovy
+import groovy.json.JsonSlurper
+
+@Library('Infrastructure') _
+
+properties([
+    parameters([
+        string(name: 'PRODUCT_NAME', defaultValue: 'recipes', description: ''),
+        string(name: 'ENVIRONMENT', defaultValue: 'sandbox', description: 'Suffix for resources created'),
+        choice(name: 'SUBSCRIPTION', choices: 'sandbox\nnonprod\nprod', description: 'Azure subscriptions available to build in')
+    ])
+])
+
+def expiresAfter = "3000-01-01"
+
+productName = params.PRODUCT_NAME
+subscription = params.SUBSCRIPTION
+environment = params.ENVIRONMENT
+
+echo "Building '${productName}' in '${environment}'"
+
+withParameterizedInfraPipeline(productName, environment, subscription) {
+    expires(expiresAfter)
+}
