@@ -29,37 +29,37 @@ module "postgresql_flexible" {
 }
 
 resource "azurerm_key_vault_secret" "POSTGRES-USER" {
-  name         = "recipe-backend-POSTGRES-USER"
+  name         = "recipes-backend-POSTGRES-USER"
   value        = module.postgresql_flexible.username
   key_vault_id = module.vault.key_vault_id
 }
 
 resource "azurerm_key_vault_secret" "POSTGRES-PASS" {
-  name         = "recipe-backend-POSTGRES-PASS"
+  name         = "recipes-backend-POSTGRES-PASS"
   value        = module.postgresql_flexible.password
   key_vault_id = module.vault.key_vault_id
 }
 
 resource "azurerm_key_vault_secret" "POSTGRES_HOST" {
-  name         = "recipe-backend-POSTGRES-HOST"
+  name         = "recipes-backend-POSTGRES-HOST"
   value        = module.postgresql_flexible.fqdn
   key_vault_id = module.vault.key_vault_id
 }
 
 resource "azurerm_key_vault_secret" "POSTGRES_PORT" {
-  name         = "recipe-backend-POSTGRES-PORT"
+  name         = "recipes-backend-POSTGRES-PORT"
   value        = "5432"
   key_vault_id = module.vault.key_vault_id
 }
 
 resource "azurerm_key_vault_secret" "POSTGRES_DATABASE_CFT" {
-  name         = "recipe-backend-POSTGRES-DATABASE-CFT"
+  name         = "recipes-backend-POSTGRES-DATABASE-CFT"
   value        = "plum"
   key_vault_id = module.vault.key_vault_id
 }
 
 resource "azurerm_key_vault_secret" "POSTGRES_DATABASE_SDS" {
-  name         = "recipe-backend-POSTGRES-DATABASE-SDS"
+  name         = "recipes-backend-POSTGRES-DATABASE-SDS"
   value        = "toffee"
   key_vault_id = module.vault.key_vault_id
 }
