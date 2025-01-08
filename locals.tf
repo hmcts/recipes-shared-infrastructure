@@ -2,6 +2,8 @@ locals {
   app        = "recipe-backend"
   create_api = var.env != "preview" && var.env != "spreview"
 
+  platform = var.common_tags.businessArea == "Cross-Cutting" ? "sds" : "cft"
+
   # list of the thumbprints of the SSL certificates that should be accepted by the API (gateway)
   allowed_certificate_thumbprints = [
     # API tests

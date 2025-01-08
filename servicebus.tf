@@ -9,7 +9,7 @@ module "servicebus_namespace" {
   resource_group_name = azurerm_resource_group.shared_resource_group.name
   env                 = var.env
   common_tags         = var.common_tags
-  project             = var.project
+  project             = local.platform
 }
 
 resource "azurerm_servicebus_queue" "recipes_service_bus_queue" {

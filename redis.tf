@@ -6,7 +6,7 @@ module "recipes-redis-storage" {
   env                             = var.env
   private_endpoint_enabled        = true
   redis_version                   = "6"
-  business_area                   = "cft"
+  business_area                   = local.platform
   public_network_access_enabled   = false
   common_tags                     = var.common_tags
   sku_name                        = var.sku_name
