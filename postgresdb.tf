@@ -8,7 +8,7 @@ module "postgresql_flexible" {
   product             = var.product
   name                = "${var.product}-flexible"
   component           = ""
-  business_area       = "CFT"
+  business_area       = local.platform
   location            = var.location
   subnet_suffix       = "expanded"
   resource_group_name = azurerm_resource_group.shared_resource_group.name
@@ -17,10 +17,7 @@ module "postgresql_flexible" {
   admin_user_object_id = var.jenkins_AAD_objectId
   pgsql_databases = [
     {
-      name : "plum"
-    },
-    {
-      name : "toffee"
+      name : "recipes"
     }
   ]
 
@@ -52,14 +49,8 @@ resource "azurerm_key_vault_secret" "POSTGRES_PORT" {
   key_vault_id = module.vault.key_vault_id
 }
 
-resource "azurerm_key_vault_secret" "POSTGRES_DATABASE_CFT" {
-  name         = "recipes-backend-POSTGRES-DATABASE-CFT"
-  value        = "plum"
-  key_vault_id = module.vault.key_vault_id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES_DATABASE_SDS" {
-  name         = "recipes-backend-POSTGRES-DATABASE-SDS"
-  value        = "toffee"
+resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
+  name         = "recipes-backend-POSTGRES-DATABASE"
+  value        = "recipes"
   key_vault_id = module.vault.key_vault_id
 }

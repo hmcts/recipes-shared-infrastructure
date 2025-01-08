@@ -9,7 +9,7 @@ variable "product" {
 }
 
 variable "project" {
-  default     = "cft"
+  default     = ""
   description = "Project name"
 }
 
