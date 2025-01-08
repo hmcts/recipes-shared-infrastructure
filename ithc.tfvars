@@ -1,1 +1,1 @@
-additional_managed_identities_access    = ["plum", "toffee"]
+additional_managed_identities_access = ["plum", "toffee"]
