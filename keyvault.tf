@@ -2,7 +2,7 @@
 
 module "vault" {
   source                               = "git@github.com:hmcts/cnp-module-key-vault?ref=master"
-  name                                 = local.vault_name
+  name                                 = "${var.product}-${local.platform}-kv-${var.env}"
   product                              = var.product
   env                                  = var.env
   tenant_id                            = var.tenant_id

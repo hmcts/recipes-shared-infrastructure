@@ -6,7 +6,7 @@ module "postgresql_flexible" {
   source              = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
   env                 = var.env
   product             = var.product
-  name                = "${var.product}-flexible"
+  name                = "${var.product}-${local.platform}-flexible"
   component           = ""
   business_area       = local.platform
   location            = var.location

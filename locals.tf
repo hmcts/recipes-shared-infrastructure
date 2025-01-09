@@ -16,9 +16,6 @@ locals {
   api_policy                = replace(file("template/api-policy.xml"), "ALLOWED_CERTIFICATE_THUMBPRINTS", local.thumbprints_in_quotes_str)
   api_base_path             = "${var.product}-api"
   shared_infra_rg           = "${var.product}-shared-infrastructure-${var.env}"
-  vault_name                = "${var.product}kv-${var.env}"
-
-  servicebus_namespace_name = "${var.product}-servicebus-${var.env}"
 
   tags = merge(
     var.common_tags,
